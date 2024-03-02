@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1708982077883,
+      "tag": "0000_wealthy_nomad",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1709068918702,
+      "tag": "0001_omniscient_marvel_zombies",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1709069264136,
+      "tag": "0002_serious_greymalkin",
+      "breakpoints": true
+    }
+  ]
+}
