@@ -1,6 +1,4 @@
-import React from 'react';
-
-const backArrowIcon = () => {
+const BackArrowIcon = () => {
   return (
     <svg
       width="45"
@@ -27,4 +25,4 @@ const backArrowIcon = () => {
   );
 };
 
-export default backArrowIcon;
+export default BackArrowIcon;

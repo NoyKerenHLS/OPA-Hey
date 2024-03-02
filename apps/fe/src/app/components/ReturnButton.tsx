@@ -1,6 +1,6 @@
 import { Box, BoxProps, IconButton } from '@mui/material';
 import { FC } from 'react';
-import BackArrowIcon from './icons/backArrowIcon';
+import BackArrowIcon from './icons/BackArrowIcon';
 import { useNavigate } from 'react-router-dom';
 
 interface IProps extends BoxProps {}
