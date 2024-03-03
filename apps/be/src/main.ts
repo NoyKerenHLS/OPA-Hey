@@ -40,10 +40,12 @@ app.use('/auth', authRoutes);
 app.use('/user', isAuthenticated, userRoutes);
 app.use('/order', isAuthenticated, orderRoutes);
 
-const port = process.env.PORT || 3333;
+app.get('/health', (req, res) => res.status(200).send({ status: 'OK' }));
 
-const server = app.listen(port, () => {
-  console.log(`⚡️ Server is listening on ${process.env.VITE_API_URL}`);
+const port = Number(process.env.PORT) || 3333;
+
+const server = app.listen(port, '0.0.0.0', () => {
+  console.log('⚡️ server is up');
 });
 
 server.on('error', console.error);
