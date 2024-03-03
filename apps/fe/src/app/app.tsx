@@ -1,11 +1,15 @@
+import { ThemeProvider } from '@mui/material';
 import Navbar from './components/Navbar';
 import AppRoutes from './routes';
+import { theme } from '../styles/typography.style';
 
 export function App() {
   return (
     <>
-      <Navbar />
-      <AppRoutes />
+      <ThemeProvider theme={theme}>
+        <Navbar />
+        <AppRoutes />
+      </ThemeProvider>
     </>
   );
 }

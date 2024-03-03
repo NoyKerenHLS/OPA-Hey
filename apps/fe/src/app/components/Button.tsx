@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { ButtonProps, Button as MuiButton } from '@mui/material';
+import { ButtonProps, Icon, Button as MuiButton } from '@mui/material';
 
 interface Props extends ButtonProps {
   children: string;
@@ -11,12 +11,15 @@ const Button: FC<Props> = ({ children, ...props }) => {
       {...props}
       variant="contained"
       sx={{
-        backgroundColor: '#A62C2A',
+        backgroundColor: '#8D3D36',
         color: 'white',
-        fontSize: '16px',
-        px: '15px',
+        fontSize: '24px',
+        px: '40px',
+        py: '6px',
+        borderRadius: '40px',
+        textTransform: 'none',
         ':hover': {
-          backgroundColor: '#A62C2A',
+          backgroundColor: '#8D3D36',
         },
       }}
     >

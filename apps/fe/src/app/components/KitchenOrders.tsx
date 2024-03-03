@@ -11,11 +11,11 @@ import {
   TableRow,
 } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
-import Body from './Body';
-import { NAVBAR_HEIGHT } from './Navbar';
+import Body from './HeadLine';
 import { IKitchenOrder, IOrder } from '../../types/order.type';
 import axios from 'axios';
 import ReturnButton from './ReturnButton';
+import { NAVBAR_HEIGHT } from '../../styles/navbar.style';
 
 interface Props {}
 

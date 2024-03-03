@@ -1,12 +1,12 @@
 import { FC, useEffect } from 'react';
 import axios from 'axios';
-import { Box, Button, Stack } from '@mui/material';
-import Body from './Body';
+import { Box, Button, Stack, Typography } from '@mui/material';
+import HeadLine from './HeadLine';
 import GoogleIcon from './icons/GoogleIcon';
 import Icon from './icons/Icon';
 import { IUser } from '../../types/user.type';
 import { useNavigate } from 'react-router-dom';
-import Background from './Background';
+import { NAVBAR_HEIGHT } from '../../styles/navbar.style';
 
 interface IProps {}
 
@@ -32,45 +32,52 @@ const Login: FC<IProps> = (props) => {
   }, []);
 
   return (
-    <Background>
-      <Box
-        display={'flex'}
-        height={'100%'}
-        width={'100%'}
-        alignItems={'center'}
-        justifyContent={'center'}
+    <Stack
+      mt={NAVBAR_HEIGHT}
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      gap="100px"
+      height={'100%'}
+    >
+      <HeadLine />
+      <Button
+        component="a"
+        href={`${import.meta.env.VITE_API_URL}/auth/google`}
+        target="_self"
+        sx={{
+          backgroundColor: '#8D3D36',
+          boxShadow: 4,
+          borderRadius: '30px',
+          color: 'white',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '10px',
+          py: '10px',
+          px: '20px',
+          lineHeight: '0px',
+          textTransform: 'none',
+        }}
       >
-        <Stack
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          gap="40px"
+        <Box
+          sx={{
+            backgroundColor: 'white',
+            borderRadius: '50%',
+            width: '30px',
+            height: '30px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
         >
-          <Body />
-          <Button
-            component="a"
-            href={`${import.meta.env.VITE_API_URL}/auth/google`}
-            target="_self"
-            sx={{
-              border: '1px solid black',
-              borderRadius: '30px',
-              color: 'black',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              px: '15px',
-              justifyContent: 'center',
-              lineHeight: '0px',
-            }}
-          >
-            <Icon width="20px" mt="5px">
-              <GoogleIcon />
-            </Icon>
-            Sign in with Google
-          </Button>
-        </Stack>
-      </Box>
-    </Background>
+          <Icon width="20px" display="flex">
+            <GoogleIcon />
+          </Icon>
+        </Box>
+        <Typography fontSize="20px">Sign in with Google</Typography>
+      </Button>
+    </Stack>
   );
 };
 

@@ -1,14 +1,21 @@
 import { useState, type FC, useEffect } from 'react';
-import { AppBar, IconButton } from '@mui/material';
-import moveoLogo from '../../assets/moveoLogo.svg';
+import { AppBar, Box, IconButton, Stack, Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import axios from 'axios';
 import { IUser } from '../../types/user.type';
+import {
+  appBarStyle,
+  logoIconStyle,
+  logoutIconStyle,
+} from '../../styles/navbar.style';
+import LogoIcon from './icons/LogoIcon';
 
-export const NAVBAR_HEIGHT = '80px';
-interface Props {}
+interface Props {
+  withLogoutIcon?: boolean;
+  withLogoName?: boolean;
+}
 
-const Navbar: FC<Props> = () => {
+const Navbar: FC<Props> = ({ withLogoutIcon, withLogoName }) => {
   const [user, setUser] = useState<IUser | null>(null);
 
   const getUser = async () => {
@@ -24,34 +31,33 @@ const Navbar: FC<Props> = () => {
   }, []);
 
   return (
-    <AppBar
-      component={'nav'}
-      sx={{
-        height: NAVBAR_HEIGHT,
-        backgroundColor: 'transparent',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        boxShadow: 'none',
-        px: '10px',
-      }}
-    >
-      <img
-        src={moveoLogo}
-        alt="moveo-logo"
-        style={{ width: '80px', height: '80px' }}
-      />
-      <IconButton
-        component="a"
-        href={`${import.meta.env.VITE_API_URL}/auth/logout`}
-        target="_self"
-      >
-        <LogoutIcon
-          fontSize="large"
-          sx={{ color: '#C1C1C1', display: 'flex' }}
-        />
-      </IconButton>
+    <AppBar component="nav" sx={appBarStyle}>
+      <Stack direction="row" alignItems={'center'} gap="10px">
+        <Box sx={logoIconStyle}>
+          <LogoIcon />
+        </Box>
+        {withLogoName ? (
+          <Typography
+            fontWeight={'bold'}
+            sx={{ fontSize: '22px', color: '#444E66' }}
+          >
+            OPA Hey
+          </Typography>
+        ) : (
+          ''
+        )}
+      </Stack>
+      {withLogoutIcon ? (
+        <IconButton
+          component="a"
+          href={`${import.meta.env.VITE_API_URL}/auth/logout`}
+          target="_self"
+        >
+          <LogoutIcon fontSize="large" sx={logoutIconStyle} />
+        </IconButton>
+      ) : (
+        ''
+      )}
     </AppBar>
   );
 };

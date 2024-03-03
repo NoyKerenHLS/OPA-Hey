@@ -8,14 +8,11 @@ import {
 } from '@mui/material';
 import React, { FC, useEffect, useState } from 'react';
 import axios from 'axios';
-import Body from './Body';
-import { NAVBAR_HEIGHT } from './Navbar';
 import { IUser } from '../../types/user.type';
 import Button from './Button';
-import { IOrder } from '../../types/order.type';
 import { useNavigate } from 'react-router-dom';
 import ReturnButton from './ReturnButton';
-import Background from './Background';
+import { NAVBAR_HEIGHT } from '../../styles/navbar.style';
 
 interface IProps {}
 
@@ -75,44 +72,57 @@ const Order: FC<IProps> = (props) => {
   };
 
   return (
-    <Background>
-      <Stack
-        mt={NAVBAR_HEIGHT}
-        gap="40px"
-        paddingX={'20px'}
+    <Stack mt={'150px'} gap="40px" paddingX={'20px'} alignItems={'center'}>
+      <Typography fontSize="30px" color={'#3E3E40'}>
+        What is your food mood today?
+      </Typography>
+      <Box
+        gap="20px"
+        display={'flex'}
+        flexDirection={'column'}
         alignItems={'center'}
       >
-        <Body />
-        <Box gap="10px" display={'flex'} flexDirection={'column'}>
-          <Typography fontSize={'20px'}>Food Preference</Typography>
-          <Select
-            defaultValue={foodPreference[0]}
-            sx={{ maxWidth: '220px', height: '40px' }}
-            onChange={handleSelectOnChange}
-          >
-            {foodPreference.map((item) => (
-              <MenuItem key={item} value={item}>
-                {item}
-              </MenuItem>
-            ))}
-          </Select>
-        </Box>
-        <Box gap="10px" display={'flex'} flexDirection={'column'}>
-          <Typography fontSize={'20px'}>Any Additional Requests?</Typography>
-          <TextField
-            multiline
-            rows={4}
-            inputProps={{ maxLength: 50 }}
-            sx={{ maxWidth: '220px' }}
-            onChange={handleTextFieldOnChange}
-          />
-        </Box>
-        <Box display={'flex'} alignSelf={'center'} mt="15px">
-          <Button onClick={handleClick}> Place Your Order! </Button>
-        </Box>
-        <ReturnButton />
-      </Stack>
-    </Background>
+        <Typography fontSize={'24px'} color={'#3E3E40'}>
+          Food Preference
+        </Typography>
+        <Select
+          defaultValue={foodPreference[0]}
+          sx={{
+            minWidth: '220px',
+            height: '40px',
+            fontSize: '24px',
+            color: '#3E3E40',
+          }}
+          onChange={handleSelectOnChange}
+        >
+          {foodPreference.map((item) => (
+            <MenuItem key={item} value={item}>
+              {item}
+            </MenuItem>
+          ))}
+        </Select>
+      </Box>
+      <Box gap="20px" display={'flex'} flexDirection={'column'}>
+        <Stack alignItems={'center'}>
+          <Typography fontSize={'24px'} color={'#3E3E40'}>
+            Any food sensitivities?
+          </Typography>
+          <Typography fontSize={'24px'} color={'#3E3E40'}>
+            Any Additional Requests?
+          </Typography>
+        </Stack>
+        <TextField
+          multiline
+          inputProps={{ maxLength: 50 }}
+          sx={{ minWidth: '220px' }}
+          onChange={handleTextFieldOnChange}
+        />
+      </Box>
+      <Box display={'flex'} alignSelf={'center'} mt="15px">
+        <Button onClick={handleClick}> Place Your Order! </Button>
+      </Box>
+      <ReturnButton />
+    </Stack>
   );
 };
 
