@@ -24,28 +24,26 @@ const AppRoutes: FC = () => {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
+    <Routes>
+      <Route path="/login" element={<Login />} />
 
-        <Route element={<ProtectedRoute user={user} role="employee" />}>
-          <Route path="/" element={<Home />} />
-        </Route>
-        <Route element={<ProtectedRoute user={user} role="employee" />}>
-          <Route path="/order" element={<Order />} />
-        </Route>
+      <Route element={<ProtectedRoute user={user} role="employee" />}>
+        <Route path="/" element={<Home />} />
+      </Route>
+      <Route element={<ProtectedRoute user={user} role="employee" />}>
+        <Route path="/order" element={<Order />} />
+      </Route>
 
-        <Route element={<ProtectedRoute user={user} role="chef" />}>
-          <Route path="/kitchen" element={<Home />} />
-        </Route>
+      <Route element={<ProtectedRoute user={user} role="chef" />}>
+        <Route path="/kitchen" element={<Home />} />
+      </Route>
 
-        <Route element={<ProtectedRoute user={user} role="chef" />}>
-          <Route path="/kitchen/orders" element={<KitchenOrders />} />
-        </Route>
+      <Route element={<ProtectedRoute user={user} role="chef" />}>
+        <Route path="/kitchen/orders" element={<KitchenOrders />} />
+      </Route>
 
-        <Route path="*" element={<p>There's nothing here: 404!</p>} />
-      </Routes>
-    </BrowserRouter>
+      <Route path="*" element={<p>There's nothing here: 404!</p>} />
+    </Routes>
   );
 };
 

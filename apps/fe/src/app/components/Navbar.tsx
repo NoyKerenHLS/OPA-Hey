@@ -1,4 +1,5 @@
 import { useState, type FC, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { AppBar, Box, IconButton, Stack, Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import axios from 'axios';
@@ -9,14 +10,25 @@ import {
   logoutIconStyle,
 } from '../../styles/navbar.style';
 import LogoIcon from './icons/LogoIcon';
+import { IOrder } from '../../types/order.type';
 
-interface Props {
-  withLogoutIcon?: boolean;
-  withLogoName?: boolean;
-}
+interface Props {}
 
-const Navbar: FC<Props> = ({ withLogoutIcon, withLogoName }) => {
+const Navbar: FC<Props> = () => {
   const [user, setUser] = useState<IUser | null>(null);
+  const [isOrdered, setIsOrdered] = useState(false);
+  const location = useLocation();
+
+  const getOrder = async () => {
+    try {
+      const { data } = await axios.get<{ order: IOrder }>('/order/employee');
+      const status = data.order.status;
+      console.log(data);
+      if (status === 'submitted') {
+        setIsOrdered(true);
+      }
+    } catch (error) {}
+  };
 
   const getUser = async () => {
     try {
@@ -28,6 +40,7 @@ const Navbar: FC<Props> = ({ withLogoutIcon, withLogoName }) => {
 
   useEffect(() => {
     getUser();
+    getOrder();
   }, []);
 
   return (
@@ -36,7 +49,9 @@ const Navbar: FC<Props> = ({ withLogoutIcon, withLogoName }) => {
         <Box sx={logoIconStyle}>
           <LogoIcon />
         </Box>
-        {withLogoName ? (
+        {location.pathname === '/order' ||
+        location.pathname === '/kitchen/orders' ||
+        (location.pathname === '/' && isOrdered) ? (
           <Typography
             fontWeight={'bold'}
             sx={{ fontSize: '22px', color: '#444E66' }}
@@ -47,7 +62,7 @@ const Navbar: FC<Props> = ({ withLogoutIcon, withLogoName }) => {
           ''
         )}
       </Stack>
-      {withLogoutIcon ? (
+      {location.pathname !== '/login' ? (
         <IconButton
           component="a"
           href={`${import.meta.env.VITE_API_URL}/auth/logout`}

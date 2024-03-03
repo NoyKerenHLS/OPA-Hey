@@ -9,6 +9,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
 import Body from './HeadLine';
@@ -38,13 +39,22 @@ const KitchenOrders: FC<Props> = () => {
   }, []);
 
   return (
-    <Stack mt={NAVBAR_HEIGHT} gap="20px" padding={'20px'}>
-      <Body HeadlineSize="30px" subHeadlineSize="14px" />
-      <TableContainer component={Paper}>
+    <Stack mt={NAVBAR_HEIGHT} gap="20px" padding={'20px'} alignItems={'center'}>
+      <Typography fontSize="26px" fontWeight={700} color="#3E3E40">
+        Manage The Orders
+      </Typography>
+      <Typography
+        fontSize="24px"
+        color="#3E3E40"
+      >{`You did X/${orders.length}`}</Typography>
+      <TableContainer>
         <Table aria-label="simple table">
           <TableHead sx={{ fontWeight: 500 }}>
             <TableRow>
-              <TableCell sx={{ fontWeight: 550 }} align="left">
+              <TableCell
+                sx={{ fontWeight: 550, fontSize: '14px' }}
+                align="left"
+              >
                 Name
               </TableCell>
               <TableCell sx={{ fontWeight: 550 }} align="left">
@@ -55,7 +65,7 @@ const KitchenOrders: FC<Props> = () => {
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody sx={{ fontSize: '14px' }}>
             {orders.map((order) => (
               <TableRow
                 key={order.id}
@@ -68,10 +78,10 @@ const KitchenOrders: FC<Props> = () => {
                   scope="row"
                   align="left"
                   padding="none"
+                  sx={{ fontSize: '14px' }}
                 >
                   <Checkbox
                     sx={{
-                      color: '#aa2a27',
                       '&.Mui-checked': { color: '#aa2a27' },
                     }}
                   />

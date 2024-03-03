@@ -38,7 +38,7 @@ const Login: FC<IProps> = (props) => {
       justifyContent="center"
       alignItems="center"
       gap="100px"
-      height={'100%'}
+      height="100%"
     >
       <HeadLine />
       <Button
