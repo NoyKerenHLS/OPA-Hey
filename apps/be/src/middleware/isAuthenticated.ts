@@ -6,5 +6,5 @@ export function isAuthenticated(
   next: NextFunction
 ): Response | void {
   if (req.user) return next();
-  else res.redirect('/');
+  else return res.status(401).send();
 }
