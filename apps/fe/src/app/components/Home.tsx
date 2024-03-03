@@ -2,9 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import axios from 'axios';
 import { IOrder } from '../../types/order.type';
 import OrderHomePage from './OrderHomePage';
-// import AfterOrderHomePage from './AfterOrderHomePage';
-
-const AfterOrderHomePage = () => null;
+import AfterOrderHomePage from './AfterOrderHomePage';
 
 interface IProps {}
 
