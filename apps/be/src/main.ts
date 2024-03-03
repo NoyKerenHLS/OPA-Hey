@@ -45,7 +45,7 @@ app.get('/health', (req, res) => res.status(200).send({ status: 'OK' }));
 const port = Number(process.env.PORT) || 3333;
 
 const server = app.listen(port, '0.0.0.0', () => {
-  console.log('⚡️ server is up, env: ', process.env.NODE_ENV);
+  console.log('⚡️ server is up');
 });
 
 server.on('error', console.error);
