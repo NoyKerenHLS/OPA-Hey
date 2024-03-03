@@ -1,15 +1,10 @@
-import { Stack, Typography } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
 import axios from 'axios';
-import Body from './HeadLine';
-import { useNavigate } from 'react-router-dom';
-import Button from './Button';
-import { IUser } from '../../types/user.type';
 import { IOrder } from '../../types/order.type';
-import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt';
-import { NAVBAR_HEIGHT } from '../../styles/navbar.style';
 import OrderHomePage from './OrderHomePage';
-import AfterOrderHomePage from './afterOrderHomePage';
+// import AfterOrderHomePage from './AfterOrderHomePage';
+
+const AfterOrderHomePage = () => null;
 
 interface IProps {}
 
