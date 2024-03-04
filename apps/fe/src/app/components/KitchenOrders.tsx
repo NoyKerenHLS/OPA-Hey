@@ -1,8 +1,5 @@
 import {
-  Box,
-  Button,
   Checkbox,
-  Paper,
   Stack,
   Table,
   TableBody,
@@ -26,12 +23,9 @@ const KitchenOrders: FC<Props> = () => {
   const [orders, setOrders] = useState<IKitchenOrder[]>([
     { id: 0, userId: 0, name: '', preference: '', notes: '' },
   ]);
-  const [checked, setChecked] = useState(false);
   const [counter, setCounter] = useState(0);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-
     event.target.checked
       ? setCounter((prevCount) => prevCount + 1)
       : setCounter((prevCount) => prevCount - 1);
@@ -54,7 +48,7 @@ const KitchenOrders: FC<Props> = () => {
     <Stack
       mt={NAVBAR_HEIGHT}
       gap="20px"
-      padding={'20px'}
+      px={{ xs: '10px', md: '50px' }}
       alignItems={'center'}
       height={'100%'}
     >
@@ -71,19 +65,19 @@ const KitchenOrders: FC<Props> = () => {
             <TableRow>
               <TableCell
                 sx={{ fontWeight: 550, fontSize: { sx: '14px', md: '20px' } }}
-                align="left"
+                align="center"
               >
                 Name
               </TableCell>
               <TableCell
                 sx={{ fontWeight: 550, fontSize: { sx: '14px', md: '20px' } }}
-                align="left"
+                align="center"
               >
                 Perfernece
               </TableCell>
               <TableCell
                 sx={{ fontWeight: 550, fontSize: { sx: '14px', md: '20px' } }}
-                align="left"
+                align="center"
               >
                 Comments
               </TableCell>
@@ -100,7 +94,7 @@ const KitchenOrders: FC<Props> = () => {
                 <TableCell
                   component="th"
                   scope="row"
-                  align="left"
+                  align="center"
                   padding="none"
                   sx={{ fontSize: { xs: '14px', md: '18px' } }}
                 >
@@ -108,22 +102,25 @@ const KitchenOrders: FC<Props> = () => {
                     icon={<CircleOutlinedIcon />}
                     checkedIcon={<CheckCircleIcon />}
                     onChange={handleChange}
-                    checked={checked}
                     sx={{
                       '&.Mui-checked': { color: '#aa2a27' },
+                      mr: '10px',
                     }}
                   />
                   {order.name}
                 </TableCell>
                 <TableCell
                   sx={{ fontSize: { xs: '14px', md: '18px' } }}
-                  align="left"
+                  align="center"
                 >
                   {order.preference}
                 </TableCell>
                 <TableCell
-                  sx={{ fontSize: { xs: '14px', md: '18px' } }}
-                  align="right"
+                  sx={{
+                    fontSize: { xs: '14px', md: '18px' },
+                    maxWidth: { xs: '30px', sm: '50px' },
+                  }}
+                  align="center"
                 >
                   {order.notes}
                 </TableCell>

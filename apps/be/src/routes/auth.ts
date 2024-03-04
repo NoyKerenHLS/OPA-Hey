@@ -23,8 +23,7 @@ passport.use(
         return done('no email', null);
       }
 
-      const isMoveoUser =
-        email.endsWith('@moveo.com') || email.endsWith('@moveohls.com');
+      const isMoveoUser = email.includes('@moveo');
 
       if (!isMoveoUser) {
         console.error('non-moveo user tried to login');

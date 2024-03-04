@@ -80,7 +80,7 @@ const OrderHomePage: FC<IProps> = (props) => {
         </Typography>
         <HeadLine icon={icon} />
         <Box display={{ xs: 'flex', md: 'none' }}>
-          <img width="268px" src={opaImage} alt="opaImage" />
+          <img width="220px" src={opaImage} alt="opaImage" />
         </Box>
         <Button disabled={isButtonDisabled} onClick={handleClick}>
           {user?.role === 'employee' ? 'Order Now' : 'view orders'}
