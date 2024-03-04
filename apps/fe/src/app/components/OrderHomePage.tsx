@@ -45,8 +45,8 @@ const OrderHomePage: FC<IProps> = (props) => {
     }
 
     const now = new Date();
-    const disabledTimeStart = new Date(new Date().setHours(17, 0, 0));
-    const disabledTimeStop = new Date(new Date().setHours(20, 0, 0));
+    const disabledTimeStart = new Date(new Date().setHours(18, 0, 0)); // for demo - later set to 12 pm
+    const disabledTimeStop = new Date(new Date().setHours(23, 59, 59));
 
     if (now >= disabledTimeStart && now <= disabledTimeStop) {
       setIsButtonDisabled(true);
