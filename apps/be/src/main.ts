@@ -17,6 +17,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1); // trust first proxy
+}
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
