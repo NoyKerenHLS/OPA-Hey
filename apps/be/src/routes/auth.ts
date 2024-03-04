@@ -17,12 +17,20 @@ passport.use(
     async function verify(_issuer, profile, done) {
       const email: string = profile.emails[0].value;
 
-      if (!email) return done('no email', null);
+      if (!email) {
+        console.error('no email provided from google auth');
+
+        return done('no email', null);
+      }
 
       const isMoveoUser =
         email.endsWith('@moveo.com') || email.endsWith('@moveohls.com');
 
-      if (!isMoveoUser) return done('not moveo user', null);
+      if (!isMoveoUser) {
+        console.error('non-moveo user tried to login');
+
+        return done('not moveo user', null);
+      }
 
       const [existingUser] = await db
         .select()
@@ -65,7 +73,7 @@ router.get(
   '/google/callback',
   passport.authenticate('google', {
     successRedirect: process.env.VITE_CLIENT_URL,
-    failureRedirect: '/login/failed',
+    failureRedirect: `${process.env.VITE_API_URL}/login/failed`,
   })
 );
 
