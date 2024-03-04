@@ -26,11 +26,12 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    ...(process.env.NODE_ENV && {
+    ...(process.env.NODE_ENV === 'production' && {
       cookie: {
         secure: true,
         sameSite: 'none',
-        // domain: 'onrender.com',
+        domain: '.onrender.com',
+        maxAge: 365 * 24 * 60 * 60 * 1000,
       },
     }),
   })
