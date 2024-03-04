@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Checkbox,
   Paper,
   Stack,
@@ -14,10 +15,10 @@ import {
 import { FC, useEffect, useState } from 'react';
 import { IKitchenOrder } from '../../types/order.type';
 import axios from 'axios';
-import ReturnButton from './ReturnButton';
 import { NAVBAR_HEIGHT } from '../../styles/navbar.style';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import ReturnButton from './ReturnButton';
 
 interface Props {}
 
@@ -50,7 +51,13 @@ const KitchenOrders: FC<Props> = () => {
   }, []);
 
   return (
-    <Stack mt={NAVBAR_HEIGHT} gap="20px" padding={'20px'} alignItems={'center'}>
+    <Stack
+      mt={NAVBAR_HEIGHT}
+      gap="20px"
+      padding={'20px'}
+      alignItems={'center'}
+      height={'100%'}
+    >
       <Typography fontSize="26px" fontWeight={700} color="#3E3E40">
         Manage The Orders
       </Typography>
@@ -63,20 +70,26 @@ const KitchenOrders: FC<Props> = () => {
           <TableHead sx={{ fontWeight: 500 }}>
             <TableRow>
               <TableCell
-                sx={{ fontWeight: 550, fontSize: '14px' }}
+                sx={{ fontWeight: 550, fontSize: { sx: '14px', md: '20px' } }}
                 align="left"
               >
                 Name
               </TableCell>
-              <TableCell sx={{ fontWeight: 550 }} align="left">
+              <TableCell
+                sx={{ fontWeight: 550, fontSize: { sx: '14px', md: '20px' } }}
+                align="left"
+              >
                 Perfernece
               </TableCell>
-              <TableCell sx={{ fontWeight: 550 }} align="left">
+              <TableCell
+                sx={{ fontWeight: 550, fontSize: { sx: '14px', md: '20px' } }}
+                align="left"
+              >
                 Comments
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody sx={{ fontSize: '14px' }}>
+          <TableBody>
             {orders.map((order) => (
               <TableRow
                 key={order.id}
@@ -89,7 +102,7 @@ const KitchenOrders: FC<Props> = () => {
                   scope="row"
                   align="left"
                   padding="none"
-                  sx={{ fontSize: '14px' }}
+                  sx={{ fontSize: { xs: '14px', md: '18px' } }}
                 >
                   <Checkbox
                     icon={<CircleOutlinedIcon />}
@@ -102,8 +115,18 @@ const KitchenOrders: FC<Props> = () => {
                   />
                   {order.name}
                 </TableCell>
-                <TableCell align="left">{order.preference}</TableCell>
-                <TableCell align="right">{order.notes}</TableCell>
+                <TableCell
+                  sx={{ fontSize: { xs: '14px', md: '18px' } }}
+                  align="left"
+                >
+                  {order.preference}
+                </TableCell>
+                <TableCell
+                  sx={{ fontSize: { xs: '14px', md: '18px' } }}
+                  align="right"
+                >
+                  {order.notes}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

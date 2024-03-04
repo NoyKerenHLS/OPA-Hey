@@ -73,7 +73,7 @@ const Order: FC<IProps> = (props) => {
 
   return (
     <Stack mt={'150px'} gap="40px" paddingX={'20px'} alignItems={'center'}>
-      <Typography fontSize="30px" color={'#3E3E40'}>
+      <Typography fontSize={{ xs: '30px', md: '50px' }} color={'#3E3E40'}>
         What is your food mood today?
       </Typography>
       <Box
@@ -82,13 +82,13 @@ const Order: FC<IProps> = (props) => {
         flexDirection={'column'}
         alignItems={'center'}
       >
-        <Typography fontSize={'24px'} color={'#3E3E40'}>
+        <Typography fontSize={{ xs: '24px', md: '36px' }} color={'#3E3E40'}>
           Food Preference
         </Typography>
         <Select
           defaultValue={foodPreference[0]}
           sx={{
-            minWidth: '220px',
+            minWidth: { xs: '220px', md: '290px' },
             height: '40px',
             fontSize: '24px',
             color: '#3E3E40',
@@ -104,24 +104,23 @@ const Order: FC<IProps> = (props) => {
       </Box>
       <Box gap="20px" display={'flex'} flexDirection={'column'}>
         <Stack alignItems={'center'}>
-          <Typography fontSize={'24px'} color={'#3E3E40'}>
+          <Typography fontSize={{ xs: '24px', md: '36px' }} color={'#3E3E40'}>
             Any food sensitivities?
           </Typography>
-          <Typography fontSize={'24px'} color={'#3E3E40'}>
+          <Typography fontSize={{ xs: '24px', md: '36px' }} color={'#3E3E40'}>
             Any Additional Requests?
           </Typography>
         </Stack>
         <TextField
           multiline
           inputProps={{ maxLength: 50 }}
-          sx={{ minWidth: '220px' }}
+          sx={{ minWidth: { xs: '220px', md: '290px' } }}
           onChange={handleTextFieldOnChange}
         />
       </Box>
       <Box display={'flex'} alignSelf={'center'} mt="15px">
         <Button onClick={handleClick}> Place Your Order! </Button>
       </Box>
-      <ReturnButton />
     </Stack>
   );
 };

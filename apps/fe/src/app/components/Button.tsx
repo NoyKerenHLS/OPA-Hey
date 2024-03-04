@@ -13,7 +13,7 @@ const Button: FC<Props> = ({ children, ...props }) => {
       sx={{
         backgroundColor: '#8D3D36',
         color: 'white',
-        fontSize: '24px',
+        fontSize: { xs: '24px', md: '30px' },
         px: '40px',
         py: '6px',
         borderRadius: '40px',

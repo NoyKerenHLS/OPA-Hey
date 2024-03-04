@@ -2,11 +2,10 @@ import { FC, useEffect } from 'react';
 import axios from 'axios';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import HeadLine from './HeadLine';
-import GoogleIcon from './icons/GoogleIcon';
-import Icon from './icons/Icon';
 import { IUser } from '../../types/user.type';
 import { useNavigate } from 'react-router-dom';
 import { NAVBAR_HEIGHT } from '../../styles/navbar.style';
+import googleIcon from '../../assets/googleIcon.png';
 
 interface IProps {}
 
@@ -46,10 +45,11 @@ const Login: FC<IProps> = (props) => {
         href={`${import.meta.env.VITE_API_URL}/auth/google`}
         target="_self"
         sx={{
-          backgroundColor: '#8D3D36',
-          boxShadow: 4,
+          boxShadow: 2,
           borderRadius: '30px',
-          color: 'white',
+          color: 'black',
+          backgroundColor: 'white',
+          border: '1px solid black',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -62,8 +62,6 @@ const Login: FC<IProps> = (props) => {
       >
         <Box
           sx={{
-            backgroundColor: 'white',
-            borderRadius: '50%',
             width: '30px',
             height: '30px',
             display: 'flex',
@@ -71,9 +69,7 @@ const Login: FC<IProps> = (props) => {
             justifyContent: 'center',
           }}
         >
-          <Icon width="20px" display="flex">
-            <GoogleIcon />
-          </Icon>
+          <img width="25px" src={googleIcon} />
         </Box>
         <Typography fontSize="20px">Sign in with Google</Typography>
       </Button>
