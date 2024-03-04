@@ -3,7 +3,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oidc';
 import passport from 'passport';
 import { eq } from 'drizzle-orm';
 import { db } from '../db';
-import { users } from '../db/schema';
+import { User, users } from '../db/schema';
 
 const router = expressRouter();
 
@@ -50,8 +50,18 @@ passport.use(
   )
 );
 
-passport.serializeUser((user, done) => done(null, user));
-passport.deserializeUser((user, done) => done(null, user));
+passport.serializeUser((user: User, done) => done(null, user.id));
+
+passport.deserializeUser(async (userId: User['id'], done) => {
+  const [user] = await db.select().from(users).where(eq(users.id, userId));
+
+  if (!user) {
+    console.error('falied to deserialize user, user not found', { userId });
+    return done(new Error('user not found'));
+  }
+
+  return done(null, user);
+});
 
 router.get('/logout', (req, res) => {
   req.logout();

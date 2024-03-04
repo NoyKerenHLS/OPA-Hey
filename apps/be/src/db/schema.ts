@@ -21,3 +21,6 @@ export const orders = pgTable('orders', {
     .notNull(),
   createdAt: timestamp('created_at', { mode: 'date' }).defaultNow(),
 });
+
+export type User = typeof users.$inferSelect;
+export type Order = typeof orders.$inferSelect;
