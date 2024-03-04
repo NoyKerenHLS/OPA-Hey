@@ -22,6 +22,13 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    ...(process.env.NODE_ENV && {
+      cookie: {
+        secure: true,
+        sameSite: 'none',
+        domain: 'onrender.com',
+      },
+    }),
   })
 );
 

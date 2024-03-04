@@ -49,6 +49,7 @@
     "@swc/helpers": "~0.5.2",
     "@testing-library/react": "14.0.0",
     "@types/cors": "^2.8.17",
+    "@types/express-session": "^1.18.0",
     "@types/jest": "^29.4.0",
     "@types/node": "18.16.9",
     "@types/react": "18.2.33",
