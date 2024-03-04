@@ -1,4 +1,4 @@
-import { Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
 import axios from 'axios';
 import HeadLine from './HeadLine';
@@ -7,12 +7,13 @@ import Button from './Button';
 import { IUser } from '../../types/user.type';
 import opaImage from '../../assets/opaImage.png';
 import { NAVBAR_HEIGHT } from '../../styles/navbar.style';
-
+import chefIcon from '../../assets/chefIcon.png';
 interface IProps {}
 
 const OrderHomePage: FC<IProps> = (props) => {
   const [user, setUser] = useState<IUser | null>(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const icon = user?.role === 'chef' ? chefIcon : '';
 
   const getUser = async () => {
     try {
@@ -58,26 +59,36 @@ const OrderHomePage: FC<IProps> = (props) => {
 
   return (
     <Stack
+      mt={NAVBAR_HEIGHT}
+      width="100%"
+      height="100%"
       alignItems={'center'}
       justifyContent={'center'}
-      mt={NAVBAR_HEIGHT}
-      gap="40px"
+      direction={{ xs: 'column', md: 'row' }}
+      gap="150px"
     >
-      <Typography
-        sx={{
-          fontSize: '26px',
-          display: 'flex',
-          alignSelf: 'center',
-          color: '#3E3E40',
-        }}
-      >
-        Hi, {userName}!
-      </Typography>
-      <HeadLine />
-      <img src={opaImage} alt="opaImage" />
-      <Button disabled={isButtonDisabled} onClick={handleClick}>
-        {user?.role === 'employee' ? 'Order Now' : 'view orders'}
-      </Button>
+      <Stack alignItems={'center'} justifyContent={'center'} gap="40px">
+        <Typography
+          sx={{
+            fontSize: { xs: '26px', md: '45px' },
+            display: 'flex',
+            alignSelf: 'center',
+            color: '#3E3E40',
+          }}
+        >
+          Hello {userName}!
+        </Typography>
+        <HeadLine icon={icon} />
+        <Box display={{ xs: 'flex', md: 'none' }}>
+          <img width="268px" src={opaImage} alt="opaImage" />
+        </Box>
+        <Button disabled={isButtonDisabled} onClick={handleClick}>
+          {user?.role === 'employee' ? 'Order Now' : 'view orders'}
+        </Button>
+      </Stack>
+      <Box display={{ xs: 'none', md: 'block' }}>
+        <img width="455px" src={opaImage} alt="opaImage" />
+      </Box>
     </Stack>
   );
 };
