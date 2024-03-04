@@ -4,15 +4,19 @@ import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import passport from 'passport';
+import connectPgSimple from 'connect-pg-simple';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth';
 import userRoutes from './routes/users';
 import orderRoutes from './routes/order';
 import { isAuthenticated } from './middleware/isAuthenticated';
+import { dbPool } from './db';
 
 dotenv.config();
 
 const app = express();
+
+const pgSession = connectPgSimple(session);
 
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -23,6 +27,7 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(
   session({
+    store: new pgSession({ pool: dbPool, createTableIfMissing: true }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
@@ -30,7 +35,6 @@ app.use(
       cookie: {
         secure: true,
         sameSite: 'none',
-        domain: '.onrender.com',
         maxAge: 365 * 24 * 60 * 60 * 1000,
       },
     }),
