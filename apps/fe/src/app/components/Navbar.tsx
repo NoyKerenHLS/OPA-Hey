@@ -7,6 +7,7 @@ import { IUser } from '../../types/user.type';
 import {
   appBarStyle,
   logoIconStyle,
+  logoNameStyle,
   logoutIconStyle,
 } from '../../styles/navbar.style';
 import LogoIcon from './icons/LogoIcon';
@@ -52,10 +53,7 @@ const Navbar: FC<Props> = () => {
         {location.pathname === '/order' ||
         location.pathname === '/kitchen/orders' ||
         (location.pathname === '/' && isOrdered) ? (
-          <Typography
-            fontWeight={'bold'}
-            sx={{ fontSize: '22px', color: '#444E66' }}
-          >
+          <Typography fontWeight="bold" sx={logoNameStyle}>
             OPA Hey
           </Typography>
         ) : (

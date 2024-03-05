@@ -1,5 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material';
 import React, { FC } from 'react';
+import { subTitleStyle, titleStyle } from '../../styles/headLine.style';
 
 interface Props {
   icon?: string;
@@ -7,20 +8,9 @@ interface Props {
 
 const HeadLine: FC<Props> = ({ icon }) => {
   return (
-    <Stack alignItems={'center'} gap="5px">
-      <Stack direction={'row'} gap="10px" alignItems={'center'}>
-        <Typography
-          fontWeight={'bold'}
-          sx={{
-            color: '#444E66',
-            lineHeight: 1.2,
-            display: 'flex',
-          }}
-          fontSize={{ xs: '60px', md: '90px' }}
-          alignSelf={'center'}
-        >
-          OPA Hey
-        </Typography>
+    <Stack alignItems="center" gap="5px">
+      <Stack direction="row" gap="10px" alignItems="center">
+        <Typography sx={titleStyle}>OPA Hey</Typography>
         {icon ? (
           <Stack>
             <Box display={{ xs: 'flex', md: 'none' }}>
@@ -34,16 +24,7 @@ const HeadLine: FC<Props> = ({ icon }) => {
           ''
         )}
       </Stack>
-      <Typography
-        display={'flex'}
-        alignSelf="center"
-        fontSize={{ xs: '26px', md: '45px' }}
-        fontWeight={300}
-        letterSpacing={'1.5px'}
-        color="#3E3E40"
-      >
-        Order Ahead, Pick Up Anytime
-      </Typography>
+      <Typography sx={subTitleStyle}>Order Ahead, Pick Up Anytime</Typography>
     </Stack>
   );
 };

@@ -1,6 +1,7 @@
 import { ButtonProps, Button as MuiButton } from '@mui/material';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { returnButtonStyle } from '../../styles/button.style';
 
 interface IProps extends ButtonProps {}
 
@@ -12,25 +13,7 @@ const ReturnButton: FC<IProps> = ({ ...props }) => {
   };
 
   return (
-    <MuiButton
-      onClick={handleClick}
-      sx={{
-        display: 'flex',
-        alignSelf: 'flex-start',
-        position: 'fixed',
-        bottom: 12,
-        backgroundColor: '#8D3D36',
-        color: 'white',
-        fontSize: { xs: '20px', md: '24px' },
-        px: '20px',
-        py: '2px',
-        borderRadius: '40px',
-        textTransform: 'none',
-        ':hover': {
-          backgroundColor: '#8D3D36',
-        },
-      }}
-    >
+    <MuiButton onClick={handleClick} sx={returnButtonStyle}>
       Go back
     </MuiButton>
   );

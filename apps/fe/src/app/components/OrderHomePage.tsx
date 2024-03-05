@@ -8,6 +8,7 @@ import { IUser } from '../../types/user.type';
 import opaImage from '../../assets/opaImage.png';
 import { NAVBAR_HEIGHT } from '../../styles/navbar.style';
 import chefIcon from '../../assets/chefIcon.png';
+import { typographyStyle } from '../../styles/orderHomePage.style';
 interface IProps {}
 
 const OrderHomePage: FC<IProps> = (props) => {
@@ -68,16 +69,7 @@ const OrderHomePage: FC<IProps> = (props) => {
       gap="150px"
     >
       <Stack alignItems={'center'} justifyContent={'center'} gap="40px">
-        <Typography
-          sx={{
-            fontSize: { xs: '26px', md: '45px' },
-            display: 'flex',
-            alignSelf: 'center',
-            color: '#3E3E40',
-          }}
-        >
-          Hello {userName}!
-        </Typography>
+        <Typography sx={typographyStyle}>Hello {userName}!</Typography>
         <HeadLine icon={icon} />
         <Box display={{ xs: 'flex', md: 'none' }}>
           <img width="220px" src={opaImage} alt="opaImage" />

@@ -4,7 +4,7 @@ export const NAVBAR_HEIGHT = '90px';
 
 export const appBarStyle: SxProps = {
   height: NAVBAR_HEIGHT,
-  backgroundColor: 'transparent',
+  backgroundColor: '#f7f7f7',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
@@ -28,3 +28,5 @@ export const logoutIconStyle: SxProps = {
   color: 'black',
   display: 'flex',
 };
+
+export const logoNameStyle: SxProps = { fontSize: '22px', color: '#444E66' };

@@ -16,6 +16,11 @@ import { NAVBAR_HEIGHT } from '../../styles/navbar.style';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import ReturnButton from './ReturnButton';
+import {
+  bodyTableCellStyle,
+  headCellStyle,
+  notesTableCellStyle,
+} from '../../styles/kitchenOrder.style';
 
 interface Props {}
 
@@ -49,8 +54,8 @@ const KitchenOrders: FC<Props> = () => {
       mt={NAVBAR_HEIGHT}
       gap="20px"
       px={{ xs: '10px', md: '50px' }}
-      alignItems={'center'}
-      height={'100%'}
+      alignItems="center"
+      height="100%"
     >
       <Typography fontSize="26px" fontWeight={700} color="#3E3E40">
         Manage The Orders
@@ -63,22 +68,13 @@ const KitchenOrders: FC<Props> = () => {
         <Table aria-label="simple table">
           <TableHead sx={{ fontWeight: 500 }}>
             <TableRow>
-              <TableCell
-                sx={{ fontWeight: 550, fontSize: { sx: '14px', md: '20px' } }}
-                align="center"
-              >
+              <TableCell sx={headCellStyle} align="center">
                 Name
               </TableCell>
-              <TableCell
-                sx={{ fontWeight: 550, fontSize: { sx: '14px', md: '20px' } }}
-                align="center"
-              >
+              <TableCell sx={headCellStyle} align="center">
                 Perfernece
               </TableCell>
-              <TableCell
-                sx={{ fontWeight: 550, fontSize: { sx: '14px', md: '20px' } }}
-                align="center"
-              >
+              <TableCell sx={headCellStyle} align="center">
                 Comments
               </TableCell>
             </TableRow>
@@ -96,7 +92,7 @@ const KitchenOrders: FC<Props> = () => {
                   scope="row"
                   align="center"
                   padding="none"
-                  sx={{ fontSize: { xs: '14px', md: '18px' } }}
+                  sx={bodyTableCellStyle}
                 >
                   <Checkbox
                     icon={<CircleOutlinedIcon />}
@@ -109,19 +105,10 @@ const KitchenOrders: FC<Props> = () => {
                   />
                   {order.name}
                 </TableCell>
-                <TableCell
-                  sx={{ fontSize: { xs: '14px', md: '18px' } }}
-                  align="center"
-                >
+                <TableCell sx={bodyTableCellStyle} align="center">
                   {order.preference}
                 </TableCell>
-                <TableCell
-                  sx={{
-                    fontSize: { xs: '14px', md: '18px' },
-                    maxWidth: { xs: '30px', sm: '50px' },
-                  }}
-                  align="center"
-                >
+                <TableCell sx={notesTableCellStyle} align="center">
                   {order.notes}
                 </TableCell>
               </TableRow>

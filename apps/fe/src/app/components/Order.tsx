@@ -6,13 +6,17 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import axios from 'axios';
 import { IUser } from '../../types/user.type';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
-import ReturnButton from './ReturnButton';
-import { NAVBAR_HEIGHT } from '../../styles/navbar.style';
+import {
+  selectLabelStyle,
+  selectStyle,
+  textFieldStyle,
+  titleStyle,
+} from '../../styles/order.style';
 
 interface IProps {}
 
@@ -72,27 +76,13 @@ const Order: FC<IProps> = (props) => {
   };
 
   return (
-    <Stack mt={'150px'} gap="40px" paddingX={'20px'} alignItems={'center'}>
-      <Typography fontSize={{ xs: '30px', md: '50px' }} color={'#3E3E40'}>
-        What is your food mood today?
-      </Typography>
-      <Box
-        gap="20px"
-        display={'flex'}
-        flexDirection={'column'}
-        alignItems={'center'}
-      >
-        <Typography fontSize={{ xs: '24px', md: '36px' }} color={'#3E3E40'}>
-          Food Preference
-        </Typography>
+    <Stack mt="150px" gap="40px" paddingX="20px" alignItems="center">
+      <Typography sx={titleStyle}>What is your food mood today?</Typography>
+      <Box gap="20px" display="flex" flexDirection="column" alignItems="center">
+        <Typography sx={selectLabelStyle}>Food Preference</Typography>
         <Select
           defaultValue={foodPreference[0]}
-          sx={{
-            minWidth: { xs: '220px', md: '290px' },
-            height: '40px',
-            fontSize: '24px',
-            color: '#3E3E40',
-          }}
+          sx={selectStyle}
           onChange={handleSelectOnChange}
         >
           {foodPreference.map((item) => (
@@ -102,23 +92,21 @@ const Order: FC<IProps> = (props) => {
           ))}
         </Select>
       </Box>
-      <Box gap="20px" display={'flex'} flexDirection={'column'}>
-        <Stack alignItems={'center'}>
-          <Typography fontSize={{ xs: '24px', md: '36px' }} color={'#3E3E40'}>
-            Any food sensitivities?
-          </Typography>
-          <Typography fontSize={{ xs: '24px', md: '36px' }} color={'#3E3E40'}>
+      <Box gap="20px" display="flex" flexDirection="column">
+        <Stack alignItems="center">
+          <Typography sx={selectLabelStyle}>Any food sensitivities?</Typography>
+          <Typography sx={selectLabelStyle}>
             Any Additional Requests?
           </Typography>
         </Stack>
         <TextField
           multiline
           inputProps={{ maxLength: 50 }}
-          sx={{ minWidth: { xs: '220px', md: '290px' } }}
+          sx={textFieldStyle}
           onChange={handleTextFieldOnChange}
         />
       </Box>
-      <Box display={'flex'} alignSelf={'center'} mt="15px">
+      <Box display="flex" alignSelf="center" mt="15px">
         <Button onClick={handleClick}> Place Your Order! </Button>
       </Box>
     </Stack>

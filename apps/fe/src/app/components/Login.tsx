@@ -6,6 +6,7 @@ import { IUser } from '../../types/user.type';
 import { useNavigate } from 'react-router-dom';
 import { NAVBAR_HEIGHT } from '../../styles/navbar.style';
 import googleIcon from '../../assets/googleIcon.png';
+import { googleSignButtonStyle, imgBoxStyle } from '../../styles/login.style';
 
 interface IProps {}
 
@@ -44,31 +45,9 @@ const Login: FC<IProps> = (props) => {
         component="a"
         href={`${import.meta.env.VITE_API_URL}/auth/google`}
         target="_self"
-        sx={{
-          boxShadow: 2,
-          borderRadius: '30px',
-          color: 'black',
-          backgroundColor: 'white',
-          border: '1px solid black',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '10px',
-          py: '10px',
-          px: '20px',
-          lineHeight: '0px',
-          textTransform: 'none',
-        }}
+        sx={googleSignButtonStyle}
       >
-        <Box
-          sx={{
-            width: '30px',
-            height: '30px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
+        <Box sx={imgBoxStyle}>
           <img width="25px" src={googleIcon} />
         </Box>
         <Typography fontSize="20px">Sign in with Google</Typography>
