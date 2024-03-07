@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  background-color: #f7f7f7;
+  height: calc(100vh - 90px);
+}
+
+#root {
+  background-color: #f7f7f7;
+  height: calc(100vh - 90px);
+}
